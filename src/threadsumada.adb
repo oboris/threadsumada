@@ -50,14 +50,14 @@ procedure threadsumada is
 
    task body starter_thread is
       sum : Long_Long_Integer := 0;
-      start_index1, finish_index1 : Integer;
+      start_index, finish_index : Integer;
    begin
       accept start(start_index, finish_index : in Integer) do
-         start_index1 := start_index;
-         finish_index1 := finish_index;
+         starter_thread.start_index := start_index;
+         starter_thread.finish_index := finish_index;
       end start;
-      sum := part_sum(start_index  => start_index1,
-                      finish_index => finish_index1);
+      sum := part_sum(start_index  => start_index,
+                      finish_index => finish_index);
       part_manager.set_part_sum(sum);
    end starter_thread;
 
